@@ -1,0 +1,10 @@
+.count {
+  display: block;
+  margin: 5px  
+}
+.search-fild, .sort {
+  margin-top: 10px;
+}
+.sort {
+  width: 100%;
+}

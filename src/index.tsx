@@ -6,13 +6,16 @@ import ruRU from 'antd/lib/locale-provider/ru_RU';
 import App from './app';
 import * as serviceWorker from './serviceWorker';
 import 'antd/dist/antd.css';
+import { AppContextProvider } from './context/context';
 
 
 ReactDOM.render(
   <ConfigProvider locale={ruRU}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <AppContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AppContextProvider>
   </ConfigProvider>,
   document.getElementById('root'),
 );
