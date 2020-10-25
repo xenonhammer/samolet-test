@@ -1,5 +1,5 @@
 import { Button, Col, Descriptions, Row } from "antd";
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom";
 import { TLibrary } from "../api";
 import { Header } from "../components/header/header";
@@ -10,13 +10,20 @@ import './libraryPage.css'
 export const LibraryPage: React.FC<{kopuk: string}> = ({kopuk}) => {
   const history = useHistory();
   const {dataAllLibs} = useAppContext();
+  const [infoLib, setInfoLib] = useState<TLibrary|undefined>();
+
+  useEffect(()=> {
+    const info = dataAllLibs.find(e => e.kopuk === kopuk)
+    console.log('kopuk :>> ', kopuk);
+    if(info) {
+      setInfoLib(info);
+    }
+  }, [infoLib])
 
   useEffect(()=>{
     if(kopuk && kopuk === '') history.push("/")
   }, [kopuk])
   
-  const infoLib = dataAllLibs.find(e => e.kopuk = kopuk)
-
   const getInfo = (data?: TLibrary) => {
     if(data){
       
